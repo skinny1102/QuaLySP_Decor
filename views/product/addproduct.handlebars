@@ -1,0 +1,107 @@
+<div class="container">
+    
+    <div>
+        
+        <nav class="navbar navbar-light  justify-content-end">
+      <a  class="btn btn-info" href="product/add"> <i class="fas fa-plus"></i> Thêm Loại Sản phẩm</a>
+        </nav>
+    </div>
+    <h3> Thêm sản phẩm</h3>
+    <div class="conatainer">
+      <form method="POST" action="" enctype="multipart/form-data">
+      <div class="form-group">
+      <label for="nameproduct" > Mã Sản phẩm</label>
+        <input type="text" class="form-control" name="idProduct" id="idProcduct"  placeholder="Nhập Mã Sản phẩm" >
+      </div>
+      <div class="form-group">
+        <label for="nameproduct">Tên sản phẩm</label>
+        <input type="text" class="form-control" name="nameProduct" id="nameProcduct"  placeholder="Nhập tên Sản phẩm">
+  </div>
+  <div class="form-group">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Options</label>
+        </div>
+        <select class="custom-select" name="categories" id="inputGroupSelect01">
+          <option selected>Choose...</option>
+            <option value="1">Armchair</option> 
+                        <option value="Bàn nước">Bàn nước</option>  
+                        <option value="Bàn ăn">Bàn ăn</option> 
+                        <option value="Bàn Đầu giường">Bàn Đầu giường</option>
+                        <option value="Tủ tivi">Tủ Tivi</option>
+                        <option value="Kệ Trưng bày">Kệ Trưng bày</option>
+                        <option value="Ghế dài ghế và đôn">Ghế dài ghế và đôn</option>  
+                        <option value="Ghế ăn">Ghế ăn</option>
+                        <option value="Giường ngủ">Giường ngủ</option>
+                        <option value="Sofa">Sofa</option>
+                        <option value="Tủ bếp">Tủ bếp</option>                     
+                        <option value="Tủ quần áo">Tủ quần áo</option>
+                        <option value="Kệ sách">Kệ sách</option>
+        </select>
+      </div>
+
+      
+    </div>  
+    <div class="form-group">
+    <label for="quantity">Số lượng</label>
+    <input type="text" class="form-control" name="quantity" id="quantity"  placeholder="Nhập số lượng">
+  </div>
+    <div class="form-group">
+    <label for="nameproduct">Giá Sản Phẩm</label>
+    <input type="text" class="form-control" name="priceProduct" id="priceProcduct"  placeholder="Nhập giáSản phẩm">
+  </div>
+  
+  <div class="form-group">
+    <label for="desProcduct">Mô tả Sản Phẩm</label>
+    <textarea class="form-control"  name="desProduct" id="desProcduct"   rows="3"></textarea>
+  </div>
+  <div class="form-group">
+      <label for="customFile">Chọn ảnh sản phẩm</label>
+    <div class="custom-file">
+    <input type="file" class="custom-file-input" name="img" id="customFile">
+    <label class="custom-file-label" for="customFile">Choose file</label>
+  </div>
+  </div>
+    <div class="form-group">
+                        <label for="example-input-file"> </label>
+                        <input type="file" name="many-files" multiple id="input-many-files" class="form-control-file border">
+     </div>
+       <div class="row">
+            <div class="col-sm-12">
+              <div class="d-flex justify-content-start">
+               
+              </div>
+            </div>
+      </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+    </div>
+</div>
+  <script>
+        $(document).ready(function() {
+            // Multiple images preview in browser - trungquandev.com
+            let imagesPreview = function(input, placeToInsertImagePreview) {
+                if (input.files) {
+                    let filesAmount = input.files.length;
+                    for (i = 0; i < filesAmount; i++) {
+                        let reader = new FileReader();
+                        reader.onload = function(event) {
+                            $($.parseHTML("<img>")).attr("src", event.target.result).addClass("rounded mx-auto d-block").css("width","150px").css("border","5px solid #555").appendTo(placeToInsertImagePreview);
+                            
+                        }
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+            };
+            $("#input-many-files").on("change", function() {
+                imagesPreview(this, "div.d-flex");
+            });
+        });
+    </script>
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>

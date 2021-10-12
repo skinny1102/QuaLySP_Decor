@@ -1,0 +1,182 @@
+{{#section 'css'}}
+<script src="public/css/style.css"></script>  
+{{/section}}
+{{#section 'js'}}
+     <script src="public/js/script.js"></script>  
+{{/section}}
+
+<div class="container">
+    <h3>Tất cả Sản Phẩm</h3>
+    <div>
+        
+        <nav class="navbar navbar-light  justify-content-between">
+      <a  class="btn btn-info" href="product/add"> <i class="fas fa-plus"></i> Thêm Sản phẩm</a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        </nav>
+    </div>
+   
+   <div class="container">
+ <table class="table">
+        <thead>
+                <tr>
+                <th scope="col">Mã Sản Phẩm</th>
+                <th scope="col">Tên Sản Phẩm</th>
+                <th scope="col"> Ảnh </th>
+                <th scope="col">Giá</th>
+                <th scope="col">Số Lượng</th>
+                 <th scope="col">Loại Sản Phẩm</th>
+                <th scope="col"></th>
+                </tr>
+         </thead>
+        <tbody>
+            {{#each obj}}
+                <tr>
+                <td>{{this.idProduct}}</td>
+                <td>{{this.nameProduct}}</td>
+                <td>
+                    <div style="height: 100px; width: 150px">
+                             <img class=" img-fluid img-thumbnail" src="{{this.imgResource}}" alt="...">
+                    </div>          
+                </td>
+                <td>{{this.priceProduct}}</td>
+                <td>{{this.quantity}}</td>
+                <td> {{this.categories}}</td>
+                <td>    <button type="button" class="btn btn-success btn-test" id="btn-test" data-id="{{this.idProduct}}" ><i class="fas fa-edit" ></i></button>
+                    <button type="button" class="btn btn-success btn-edit" style="display: none;" data-toggle="modal" id="btn-edit"  data-target=".bd-example-modal-lg" data-id="{{this.idProduct}}" ><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#exampleModal" data-id="{{this.idProduct}}"> <i class="fas fa-trash-alt"></i></button>    
+                </td>
+                </tr>
+            {{/each}}
+              
+                
+         </tbody>
+         
+    </table>
+
+   </div> 
+    <div class="container">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Sau</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                <a class="page-link" href="#">Tiếp</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+  {{!-- SHOW SẢN PHẨM --}}
+<div class="modal fade bd-example-modal-lg" id="showproductModel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" id="cancel" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodysp">
+        <form>
+          <div class="form-group row">
+            <label for="idProduct" class="col-sm-2 col-form-label">Mã Sản Phẩm</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="idProduct" id="idProduct" placeholder="" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nameProduct" class="col-sm-2 col-form-label">Tên Sản phẩm</label>
+            <div class="col-sm-10">
+              <input type="text"  class="form-control" name="nameProduct" id="nameProduct" value="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="categories" class="col-sm-2 col-form-label">Loại Sản Phẩm</label>
+            <div class="col-sm-10">
+              <select class="custom-select" name="categories" id="categories">
+                  <option selected>Choose...</option>
+                                <option value="Armchair">Armchair</option> 
+                                <option value="Bàn nước">Bàn nước</option>  
+                                <option value="Bàn ăn">Bàn ăn</option> 
+                                <option value="Bàn Đầu giường">Bàn Đầu giường</option>
+                                <option value="Tủ tivi">Tủ Tivi</option>
+                                <option value="Kệ Trưng bày">Kệ Trưng bày</option>
+                                <option value="Ghế dài ghế và đôn">Ghế dài ghế và đôn</option>  
+                                <option value="Ghế ăn">Ghế ăn</option>
+                                <option value="Giường ngủ">Giường ngủ</option>
+                                <option value="Sofa">Sofa</option>
+                                <option value="Tủ bếp">Tủ bếp</option>                     
+                                <option value="Tủ quần áo">Tủ quần áo</option>
+                                <option value="Kệ sách">Kệ sách</option>
+                </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="priceProduct" class="col-sm-2 col-form-label">Giá</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="priceProduct" id="priceProduct" placeholder="">
+            </div>
+          </div>
+         
+         <div class="form-group row">
+            <label for="quantity" class="col-sm-2 col-form-label">Số lượng</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="quantity" id="quantity" placeholder="">
+            </div>
+          </div>
+        <div class="form-group row">
+            <label for="descriptionProduct" class="col-sm-2 col-form-label">Mô tả</label>
+            <div class="col-sm-10">
+               <textarea class="form-control" name="descriptionProduct" id="descriptionProduct" rows="3"></textarea>
+            </div>
+          </div>
+            <div class="form-group row">
+            <label for="imgResource" class="col-sm-2 col-form-label">Ảnh</label>
+            <div class="col-sm-10">
+               <img src="" class="img-fluid rounded" id="imgResource" alt="Responsive image">
+            </div>
+          </div>
+
+        </form>
+      </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-close" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+ 
+
+  </div>
+</div>
+
+
+{{!-- DELTE SẢN PHẨM --}}
+<form method="POST" id="form_delete_sp">
+</form>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có chắc muốn xóa sản phẩm này...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="btnDelete" class="btn btn-danger">Xóa </button>
+      </div>
+    </div>
+  </div>
+</div>
